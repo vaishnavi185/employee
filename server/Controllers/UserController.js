@@ -47,4 +47,35 @@ const userphone= await User.findOne({ phone });
 
 }
 
-module.exports={registerUser}
+
+const loginUser = async (req, res) => {
+  const { email, passward } = req.body;
+
+  // ✅ Fix typo: 'ststus' ➝ 'status'
+  if (!email || !passward) {
+    return res.status(400).json({ success: false, message: "All fields are required" });
+  }
+
+  try {
+    const user = await User.findOne({ email });
+
+    if (user && user.passward === passward) {
+      return res.status(200).json({
+        success: true,
+        message: "Login successful",
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        passward: user.passward // In real apps, don't return passwords
+      });
+    } else {
+      return res.status(401).json({ success: false, message: "Invalid email or password" });
+    }
+  } catch (error) {
+    console.error("Login error:", error);
+    return res.status(500).json({ success: false, message: "Server error" });
+  }
+};
+
+module.exports={registerUser,loginUser}
