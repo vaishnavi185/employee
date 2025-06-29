@@ -5,7 +5,7 @@ require('dotenv').config();
 const connect = async (DATABASE_URL) => {
   try {
     const dbOptions = {
-      dbName: 'employee',
+      dbName: 'employeeDas',
     };
     await mongoose.connect(DATABASE_URL, dbOptions);
     console.log('✅ Database connected successfully');
