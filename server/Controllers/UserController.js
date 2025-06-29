@@ -5,24 +5,25 @@ const registerUser =async(req,res)=>{
    const {name ,email,phone,passward } =req.body;
 
    
-      const user = new User({
-        name,email,phone,passward
-      })
+    //   const user = new User({
+    //     name,email,phone,passward
+    //   })
+      
       if(!name || !email || !phone || !passward){
         return res.status(400).json({message :"all fields are require"})
       }
 
-      const userexist = await user.findOne({ email });
+      const userexist = await User.findOne({ email });
     if (userexist) {
         return res.status(400).json({ message: "User with this email already exists" });
     }
     
-const userphone= await user.findOne({ phone });
-    if (userexist) {
+const userphone= await User.findOne({ phone });
+    if (userphone) {
         return res.status(400).json({ message: "User with this phone number already exists" });
     }
 
-     const newuser = await user.create({
+     const newuser = await User.create({
         name,
         email,
         phone,
@@ -33,8 +34,8 @@ const userphone= await user.findOne({ phone });
             _id: newuser._id,
             name: newuser.name,
             email: newuser.email,
-            isAdmin: newuser.isAdmin,
-            token: generateToken(newuser._id),
+            phone: newuser.phone,
+            passward: newuser.passward, // Return the hashed password
         });
     } else {
         res.status(400).json({ message: "User not created" });
