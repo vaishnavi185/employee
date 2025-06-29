@@ -7,6 +7,8 @@ const app=express();
 const port =process.env.Port || 3000;
 const DatabaseURL = process.env.DATABASE_URL;
 connect(DatabaseURL)
+const cors = require('cors');
+app.use(cors());
 
 
 app.get('/',(req,res)=>{

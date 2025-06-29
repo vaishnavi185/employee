@@ -29,12 +29,16 @@ const userphone= await User.findOne({ phone });
     });
      if (newuser) {
         res.status(201).json({
+           success: true,
+      message: "User created successfully",
             _id: newuser._id,
+        
             name: newuser.name,
             email: newuser.email,
             phone: newuser.phone,
             passward: newuser.passward, // Return the hashed password
         });
+
     } else {
         res.status(400).json({ message: "User not created" });
     }
