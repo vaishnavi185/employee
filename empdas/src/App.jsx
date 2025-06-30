@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 
 import SignupPage from './components/SignupPage'
+import Login from './components/Login'
 
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
 
   return (
     <>
-      <SignupPage></SignupPage>
+      {/* <SignupPage></SignupPage> */}
+      <Login></Login>
     </>
   )
 }
