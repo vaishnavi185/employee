@@ -17,10 +17,10 @@ const [formData,setFormData]=useState({
     });
   };
 const handleSubmit =async(e)=>{
-    if (!formData.name || !formData.passward) {
-     alert("all fields are required")
-      return;
-    }
+    // if (!formData.name || !formData.passward) {
+    //  alert("all fields are required")
+    //   return;
+    // }
     try{
     e.preventDefault();
     const response = await axios.post('http://localhost:3000/user/login',formData,{
