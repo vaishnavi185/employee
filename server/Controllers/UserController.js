@@ -51,7 +51,7 @@ const userphone= await User.findOne({ phone });
 const loginUser = async (req, res) => {
   const { email, passward } = req.body;
 
-  // ✅ Fix typo: 'ststus' ➝ 'status'
+
   if (!email || !passward) {
     return res.status(400).json({ success: false, message: "All fields are required" });
   }
