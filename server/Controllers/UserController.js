@@ -70,9 +70,12 @@ const loginUser = async (req, res) => {
         email: user.email,
         phone: user.phone,
         token: generateToken(user._id)
-      });
+      }
+      
+    
+    );
 
-      console.log(token);
+     
     } else {
       return res.status(401).json({ success: false, message: "Invalid email or password" });
     }
