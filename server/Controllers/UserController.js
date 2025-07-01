@@ -1,6 +1,8 @@
 const express = require('express');
 const User = require('../Model/data');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const generateToken = require('../Config/token');
 
 const registerUser = async (req, res) => {
   const { name, email, phone, passward } = req.body;
@@ -35,7 +37,8 @@ const registerUser = async (req, res) => {
       _id: newUser._id,
       name: newUser.name,
       email: newUser.email,
-      phone: newUser.phone
+      phone: newUser.phone,
+      token: generateToken(newUser._id)
     });
   } else {
     res.status(400).json({ message: "User not created" });
@@ -65,8 +68,11 @@ const loginUser = async (req, res) => {
         _id: user._id,
         name: user.name,
         email: user.email,
-        phone: user.phone
+        phone: user.phone,
+        token: generateToken(user._id)
       });
+
+      console.log(token);
     } else {
       return res.status(401).json({ success: false, message: "Invalid email or password" });
     }
