@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 import SignupPage from './components/SignupPage'
 import Login from './components/Login'
+import Formm from './components/Formm'
 
 
 function App() {
@@ -11,7 +12,9 @@ function App() {
   return (
     <>
       {/* <SignupPage></SignupPage> */}
-      <Login></Login>
+      {/* <Login></Login> */}
+
+      <Formm></Formm>
     </>
   )
 }
