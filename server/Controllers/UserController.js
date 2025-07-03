@@ -61,24 +61,49 @@ const loginUser = async (req, res) => {
 
     const isMatch = await bcrypt.compare(passward, user.passward);
 
-    if (isMatch) {
-      return res.status(200).json({
-        success: true,
-        message: "Login successful",
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        phone: user.phone,
-        token: generateToken(user._id)
-      }
-      
-    
-    );
-
-     
-    } else {
+     if (!isMatch) {
       return res.status(401).json({ success: false, message: "Invalid email or password" });
     }
+  const token = generateToken(user._id);
+
+  res.cookie("token", token, {
+      httpOnly: true,
+      secure: false,
+      sameSite: "Strict",
+      maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days
+    });
+
+
+    
+    res.status(200).json({
+      success: true,
+      message: "Login successful",
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
+      token: token
+    });
+
+
+    console.log("token",token)
+  //   if (isMatch) {
+  //     return res.status(200).json({
+  //       success: true,
+  //       message: "Login successful",
+  //       _id: user._id,
+  //       name: user.name,
+  //       email: user.email,
+  //       phone: user.phone,
+  //       token: generateToken(user._id)
+  //     }
+      
+  
+    
+  //   );
+
+  // } 
+  
   } catch (error) {
     console.error("Login error:", error);
     return res.status(500).json({ success: false, message: "Server error" });

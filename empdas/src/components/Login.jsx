@@ -26,7 +26,8 @@ const handleSubmit =async(e)=>{
     const response = await axios.post('http://localhost:3000/user/login',formData,{
         headers: {
     'Content-Type': 'application/json'
-  }
+  },
+  withCredentials:true
     });
     console.log(response.data);
 
