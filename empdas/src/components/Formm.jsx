@@ -39,7 +39,7 @@ export default function Formm() {
               // value="christinebrown@gmail.com"
               className="w-full border-gray-300 rounded-md shadow-sm "
             />
-            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-green-500 text-sm font-medium">✔ Verified</span>
+            {/* <span className="absolute right-3 top-1/2 -translate-y-1/2 text-green-500 text-sm font-medium">✔ Verified</span> */}
           </div>
         </div>
 
@@ -62,7 +62,7 @@ export default function Formm() {
               // value="+1 945-913-2196"
               className="w-full border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500"
             />
-            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-green-500 text-sm font-medium">✔ Verified</span>
+            {/* <span className="absolute right-3 top-1/2 -translate-y-1/2 text-green-500 text-sm font-medium">✔ Verified</span> */}
           </div>
         </div>
       </div>
