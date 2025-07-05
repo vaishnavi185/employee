@@ -6,7 +6,7 @@ const profileschema= new mongoose.Schema({
     phone:{type:String ,required:true,unique:true},
 Username:{type:String,required:true},
     Bio:{type:String,required:true},
-    profilePicture: { type: String, default: '' }, // Default profile picture URL
+    profilePicture: { type: String, default: '' }, 
     
 }, {
     timestamps: true // Automatically manage createdAt and updatedAt fields
