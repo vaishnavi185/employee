@@ -6,11 +6,11 @@ const profileschema= new mongoose.Schema({
     phone:{type:String ,required:true,unique:true},
 Username:{type:String,required:true},
     Bio:{type:String,required:true},
-    profilePicture: { type: String, default: '' }, 
+    // profilePicture: { type: String, default: '' }, 
     
 }, {
     timestamps: true // Automatically manage createdAt and updatedAt fields
 })
 
-const UserProfile = mongoose.model('User',profileschema);
+const UserProfile = mongoose.model('UserPro',profileschema);
 module.exports=UserProfile;
