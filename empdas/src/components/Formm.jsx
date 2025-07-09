@@ -46,7 +46,7 @@ const handleSubmit = async (e) => {
          <UserCircleIcon className="w-20 h-20 text-gray-400" />
         <div className="space-x-2">
           <button className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700">
-            Upload New
+            Add Profile
           </button>
           <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300">
             Remove Profile Picture
@@ -62,6 +62,7 @@ const handleSubmit = async (e) => {
           <input
             type="text"
             name="Fullname"
+            placeholder="Fullname"
              onChange={handleChange}
             value={formdata.Fullname}
             className="w-full border-gray-300 rounded-md shadow-sm "
@@ -75,6 +76,7 @@ const handleSubmit = async (e) => {
             <input
               type="email"
               name="email"
+              placeholder="email"
               value={formdata.email}
                onChange={handleChange}
               
@@ -90,6 +92,7 @@ const handleSubmit = async (e) => {
           <input
             type="text"
             name="Username"
+            placeholder="Username"
             value={formdata.Username}
              onChange={handleChange}
 
@@ -105,6 +108,7 @@ const handleSubmit = async (e) => {
             <input
               type="text"
               name="phone"
+              placeholder="phone"
               value={formdata.phone}
               onChange={handleChange}
               className="w-full border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500"
@@ -118,8 +122,10 @@ const handleSubmit = async (e) => {
       <div className="mt-6">
         <label className="block text-sm font-medium text-gray-700 mb-1">Bio</label>
         <textarea
+        
           rows="4"
           name="Bio"
+          placeholder="add bio"
           value={formdata.Bio}
           onChange={handleChange}
           className="w-full border-gray-300 rounded-md shadow-sm "
@@ -129,7 +135,7 @@ const handleSubmit = async (e) => {
       {/* Submit Button */}
       <div className="mt-6">
         <button className="bg-purple-600 text-white px-6 py-2 rounded-md hover:bg-purple-700"onClick={handleSubmit}>
-          Update Profile
+          Done
         </button>
       </div>
     </div>
