@@ -3,6 +3,7 @@ const UserProfile = require('../Model/Userinfo');
 
 const FormController = async(req,res,next)=>{
   const { Fullname, email, phone, Username, Bio,  } = req.body;
+  const profilePicture = req.file ? req.file.path : '';
 try{
     let profile = await UserProfile.findOne({email});
 
@@ -12,7 +13,7 @@ try{
         profile.phone=phone;
         profile.Username=Username;
         profile.Bio=Bio;
-        // profile.profilePicture=profilePicture;
+        if (profilePicture) profile.profilePicture = profilePicture;
 
     }else{
         profile=new UserProfile({
@@ -21,7 +22,7 @@ try{
         phone,
         Username,
         Bio,
-        // profilePicture, 
+        profilePicture
         })
     }
     await profile.save();

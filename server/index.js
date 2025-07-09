@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const connect = require('./Config/database');
 const userRoute = require('./Routes/userRoute');
 const app=express();
+const upload = require('./Middleware/Upload');
 const cookieParser = require('cookie-parser');
 
 
