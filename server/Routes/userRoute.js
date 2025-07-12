@@ -8,5 +8,5 @@ route.post('/registration',registerUser);
 
 route.post('/login',loginUser);
 route.post('/Form', Auth, upload.single('profilePicture'), FormController);
-route.get('./getform',Auth,getForm)
+route.get('/getform',Auth,getForm)
 module.exports=route;

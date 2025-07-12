@@ -4,6 +4,7 @@ const connect = require('./Config/database');
 const userRoute = require('./Routes/userRoute');
 const app=express();
 const upload = require('./Middleware/Upload');
+const path = require('path')
 const cookieParser = require('cookie-parser');
 
 
@@ -15,6 +16,8 @@ app.use(cors({
   origin: 'http://localhost:5173', // your frontend origin
   credentials: true               // allow cookies
 }));
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use(express.json())
 app.use(cookieParser());

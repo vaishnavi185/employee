@@ -15,8 +15,8 @@ function App() {
       {/* <SignupPage></SignupPage> */}
       {/* <Login></Login> */}
 
-      {/* <Formm></Formm> */}
-      <ProfileCard></ProfileCard>
+      <Formm></Formm>
+      {/* <ProfileCard></ProfileCard> */}
     </>
   )
 }
