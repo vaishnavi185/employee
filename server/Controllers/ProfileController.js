@@ -28,7 +28,7 @@ try{
     await profile.save();
 res.status(200).json({ message: 'Profile saved successfully', profile });
   } catch (err) {
-   console.error("🔥 ERROR in FormController:", err); 
+   console.error(" ERROR in FormController:", err); 
     res.status(500).json({ message: 'Server error' });
   }
 }
