@@ -35,7 +35,6 @@ await profile.save();
     console.log(e)
   }
 }
-
 const getForm = async (req, res) => {
   try {
     const userEmail = req.user?.email;
@@ -44,18 +43,36 @@ const getForm = async (req, res) => {
       return res.status(401).json({ message: 'Unauthorized' });
     }
 
-    const profile = await UserProfile.findOne({ email: userEmail });
+    // Step 1: Find the user by email
+    const user = await User.findOne({ email: userEmail });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Step 2: Find the profile using userId and populate email/phone
+    const profile = await UserProfile.findOne({ userId: user._id })
+      .populate('userId', 'email phone'); // fetch email and phone from User model
 
     if (!profile) {
       return res.status(404).json({ message: 'Profile not found' });
     }
 
-    res.status(200).json(profile);
+    // Step 3: Combine profile data with email and phone
+    const profileWithContact = {
+      ...profile.toObject(),
+      email: profile.userId.email,
+      phone: profile.userId.phone
+    };
+
+    res.status(200).json(profileWithContact);
   } catch (err) {
     console.error("🔥 ERROR in getForm:", err);
     res.status(500).json({ message: 'Server error' });
   }
 };
+
+
 
 
 module.exports={
