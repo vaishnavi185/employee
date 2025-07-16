@@ -9,6 +9,7 @@ import {
   ArrowLeftOnRectangleIcon
 } from "@heroicons/react/24/outline";
 
+
 const menuItems = [
   { name: "Dashboard", icon: <HomeIcon className="h-5 w-5" /> },
   
@@ -23,7 +24,7 @@ const menuItems = [
 
 export default function NavBar() {
   return (
-    <div className="w-56 min-h-screen bg-white border-r px-4 py-6 flex flex-col justify-between">
+    <div className="w-56 min-h-screen bg-[#c9e2f5]  px-4 py-6 flex flex-col justify-between">
       <div className="space-y-3">
         {menuItems.map((item, i) => (
           <div
