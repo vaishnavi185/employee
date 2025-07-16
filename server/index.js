@@ -17,6 +17,7 @@ app.use(cors({
   credentials: true               // allow cookies
 }));
 
+
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use(express.json())

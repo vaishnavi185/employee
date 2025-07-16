@@ -34,10 +34,15 @@ const getFormData = async () => {
         {/* Profile Image Section */}
        <div className="relative">
   <img
-    src={profileData.profilePicture || '/default-avatar.png'}
-    alt="Profile"
-    className="rounded-full w-[180px] h-[180px] border border-[#b3afaf] mt-[20px] ml-[20px] object-cover"
-  />
+  src={
+    profileData.profilePicture
+      ? `http://localhost:3000/${profileData.profilePicture.replace(/\\/g, '/')}`
+      : '/default-avatar.png'
+  }
+  alt="Profile"
+  className="rounded-full w-[180px] h-[180px] border border-[#b3afaf] mt-[20px] ml-[20px] object-cover"
+/>
+
 
   <button className="absolute top-[150px] left-[170px] text-[#b3afaf] text-[18px] hover:bg-[#dedede] rounded-full w-[40px] h-[40px] border-[1px] bg-[#FFFFFF] flex items-center justify-center">
     <PencilIcon className="h-5 w-5" />
