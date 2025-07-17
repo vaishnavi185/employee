@@ -40,7 +40,7 @@ export default function NavBar() {
           </div>
         ))}
       </div>
-      <div className="flex items-center gap-3 text-gray-500 hover:text-red-500 cursor-pointer">
+      <div className="flex items-center gap-3 text-gray-500 hover:text-blue-500 cursor-pointer">
         <ArrowLeftOnRectangleIcon className="h-5 w-5" />
         <span className="text-sm font-medium">Log out</span>
       </div>

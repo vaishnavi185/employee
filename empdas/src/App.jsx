@@ -6,6 +6,7 @@ import Login from './components/Login'
 import Formm from './components/Formm'
 import ProfileCard from './components/ProfilePage'
 import NavBar from './components/NavBar'
+import Home  from './components/Home'
 
 function App() {
   
@@ -18,8 +19,7 @@ function App() {
     //     <Route path='/profile' element={<ProfileCard />} />
     //   </Routes>
     // </Router>
-
-    <NavBar></NavBar>
+<Home></Home>
   )
 }
 
