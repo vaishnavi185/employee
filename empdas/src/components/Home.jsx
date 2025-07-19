@@ -3,6 +3,7 @@ import NavBar from './NavBar'
 import Search from './Search'
 import Mail from './Mail'
 import Notification from './Notification'
+import ProfilePage from './ProfilePage'
 
 export default function Home() {
   return (
@@ -16,6 +17,8 @@ export default function Home() {
 
       <Mail></Mail>
       <Notification></Notification>
+      
+      <ProfilePage></ProfilePage>
     </div>
   )
 }

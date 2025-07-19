@@ -24,19 +24,19 @@ const menuItems = [
 
 export default function NavBar() {
   return (
-    <div className="w-56 min-h-screen bg-[#c9e2f5]  px-4 py-6 flex flex-col justify-between">
-      <div className="space-y-3">
+    <div className="w-56 min-h-screen bg-[#202121]  px-4 py-6 flex flex-col justify-between ">
+      <div className="space-y-3 ">
         {menuItems.map((item, i) => (
           <div
             key={i}
-            className={`flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer ${
+            className={`flex items-center gap-3 px-3 py-2  rounded-lg cursor-pointer ${
               item.active
                 ? "bg-blue-500 text-white"
                 : "hover:bg-gray-100 text-gray-700"
             }`}
           >
             {item.icon}
-            <span className="text-sm font-medium">{item.name}</span>
+            <span className="text-sm font-medium text-[#FFFFFF]">{item.name}</span>
           </div>
         ))}
       </div>

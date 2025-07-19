@@ -1,70 +1,47 @@
-import React from 'react';
-import { PencilIcon } from '@heroicons/react/24/solid'; // or /24/outline for outline style
-import axios from 'axios'
-import { useEffect, useState } from 'react';
+import { Menu } from '@headlessui/react';
+import { ChevronDownIcon ,ChevronLeftIcon,UserCircleIcon} from '@heroicons/react/20/solid';
 
 export default function ProfilePage() {
-     const [profileData, setProfileData] = useState({});
-const getFormData = async () => {
-    try {
-      const response = await axios.get('http://localhost:3000/user/getform',{
-         withCredentials: true,
-      }); // ✅ Correct URL
-      setProfileData(response.data); // ✅ Save to state
-    } catch (e) {
-      console.error('Failed to fetch profile:', e);
-    }
-  };
-
-  useEffect(() => {
-    getFormData(); 
-  }, []);
-
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen 
-">
- 
-      <div className="w-[1000px] h-auto border border-[#b3afaf] rounded-[20px] flex flex-row p-6 relative hover:bg[#000000]">
-        
-    
-        <button className="absolute top-3 right-3 text-[#b3afaf] text-[20px] hover:text-black">
-          <PencilIcon className="h-5 w-5" />
-        </button>
+    <Menu as="div" className="relative inline-block text-left  mt-[25px] ml-[40px]">
+      <div>
+       <Menu.Button className="flex items-center gap-2 px-3 py-2 text-sm font-semibold text-gray-900   hover:bg-[#c8c9cc] transition-colors  rounded-md">
+          {/* Profile Icon */}
+          <UserCircleIcon className="h-[40px] w-[40px] text-gray-500" />
 
-        {/* Profile Image Section */}
-       <div className="relative">
-  <img
-  src={
-    profileData.profilePicture
-      ? `http://localhost:3000/${profileData.profilePicture.replace(/\\/g, '/')}`
-      : '/default-avatar.png'
-  }
-  alt="Profile"
-  className="rounded-full w-[180px] h-[180px] border border-[#b3afaf] mt-[20px] ml-[20px] object-cover"
-/>
-
-
-  <button className="absolute top-[150px] left-[170px] text-[#b3afaf] text-[18px] hover:bg-[#dedede] rounded-full w-[40px] h-[40px] border-[1px] bg-[#FFFFFF] flex items-center justify-center">
-    <PencilIcon className="h-5 w-5" />
-  </button>
-</div>
-
-        {/* Profile Info Display Section */}
-        <div className="flex flex-col ml-[40px] mt-[10px] flex-1">
-          <div className="text-[24px] font-semibold text-[#b3afaf] mb-[20px]">
-            Profile Settings
+          {/* Name and Email */}
+          <div className="flex flex-col items-start text-left">
+            <span className="text-sm font-medium">John Doe</span>
+            <span className="text-xs text-gray-500">example@gmail.com</span>
           </div>
 
-          {/* Display Profile Data */}
-          <div className="text-[#b3afaf] text-[18px] flex flex-col gap-2">
-            <div><strong>Full Name:</strong> {profileData.Fullname}</div>
-            <div><strong>Email:</strong> {profileData.email}</div>
-            <div><strong>Phone:</strong> {profileData.phone}</div>
-            <div><strong>Username:</strong> {profileData.Username}</div>
-            <div><strong>Bio:</strong> {profileData.Bio}</div>
-          </div>
-        </div>
+          {/* Dropdown Icon */}
+          <ChevronDownIcon className="ml-2 h-5 w-5 text-gray-400" aria-hidden="true" />
+        </Menu.Button>
       </div>
-    </div>
+
+      <Menu.Items className="absolute right-[20px] z-10   w-[360px] h-[500px] origin-top-right divide-y divide-gray-100 rounded-[30px] bg-white focus:outline-none">
+        <div className="flex flex-col">
+          <Menu.Item>
+            {({ active }) => (
+           <div className='w-[360px] h-[200px] bg-[#202121] rounded-t-[30px]  flex flex-col'>
+                <ChevronLeftIcon className='h-[30px] w-[30px] text-[#a6abad] mt-[10px] ml-[10px]'></ChevronLeftIcon >
+           </div>
+            )}
+          </Menu.Item>
+          <Menu.Item>
+            {({ active }) => (
+              <a
+                href="#"
+                className={`block px-4 py-2 text-sm text-gray-700 ${active ? 'bg-gray-100 text-gray-900' : ''}`}
+              >
+                Duplicate
+              </a>
+            )}
+          </Menu.Item>
+        </div>
+        {/* Add the other groups similarly */}
+      </Menu.Items>
+    </Menu>
   );
 }
