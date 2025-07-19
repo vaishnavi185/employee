@@ -11,15 +11,15 @@ import {
 
 
 const menuItems = [
-  { name: "Dashboard", icon: <HomeIcon className="h-5 w-5" /> },
+  { name: "Dashboard", icon: <HomeIcon className="h-5 w-5 text-[#FFFFFF]"  /> },
   
  
-  { name: "Employee", icon: <UsersIcon className="h-5 w-5" /> },
+  { name: "Employee", icon: <UsersIcon className="h-5 w-5 text-[#FFFFFF]" /> },
  
-  { name: "Analytics", icon: <ChartBarIcon className="h-5 w-5" /> },
-  { name: "Setting", icon: <Cog6ToothIcon className="h-5 w-5" /> },
-   { name: "Profile", icon: <UserCircleIcon className="h-5 w-5" /> } ,
-  { name: "Help", icon: <QuestionMarkCircleIcon className="h-5 w-5" /> }
+  { name: "Analytics", icon: <ChartBarIcon className="h-5 w-5 text-[#FFFFFF]" /> },
+  { name: "Setting", icon: <Cog6ToothIcon className="h-5 w-5 text-[#FFFFFF]" /> },
+   { name: "Profile", icon: <UserCircleIcon className="h-5 w-5 text-[#FFFFFF]" /> } ,
+  { name: "Help", icon: <QuestionMarkCircleIcon className="h-5 w-5 text-[#FFFFFF]" /> }
 ];
 
 export default function NavBar() {
@@ -32,7 +32,7 @@ export default function NavBar() {
             className={`flex items-center gap-3 px-3 py-2  rounded-lg cursor-pointer ${
               item.active
                 ? "bg-blue-500 text-white"
-                : "hover:bg-gray-100 text-gray-700"
+                : "hover:bg-gray-500 text-gray-700"
             }`}
           >
             {item.icon}
