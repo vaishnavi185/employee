@@ -1,26 +1,30 @@
+import ProtectedRoute from './components/ProtectedRoute'; // add this import
 import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-
 import SignupPage from './components/SignupPage'
 import Login from './components/Login'
 import Formm from './components/Formm'
-import ProfileCard from './components/ProfilePage'
-import NavBar from './components/NavBar'
-import Home  from './components/Home'
 
+import Home  from './components/Home'
 function App() {
-  
   return (
-    // <Router>
-    //   <Routes>
-    //     <Route path='/' element={<SignupPage />} />
-    //     <Route path='/login' element={<Login />} />
-    //     <Route path='/form' element={<Formm />} />
-    //     <Route path='/profile' element={<ProfileCard />} />
-    //   </Routes>
-    // </Router>
-<Home></Home>
-  )
+    <Router>
+      <Routes>
+        <Route path='/' element={<SignupPage />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/form' element={<Formm />} />
+        
+        <Route
+          path='/Dasboard'
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

@@ -29,7 +29,7 @@ export default function ProfilePage() {
             {({ active }) => (
            <div className='w-[360px] h-[200px] bg-[#202121] rounded-t-[30px]  flex flex-col'>
             <div className='flex flex-row gap-[280px]'>
-  <ChevronLeftIcon className='h-[30px] w-[30px] text-[#a6abad] mt-[10px] ml-[10px]'></ChevronLeftIcon >
+  <ChevronLeftIcon className='h-[30px] w-[30px] text-[#a6abad] mt-[10px] ml-[10px] '></ChevronLeftIcon >
 <PencilSquareIcon className=" h-5 w-5 text-gray-400 mt-[10px]" aria-hidden="true" />
             </div>
               

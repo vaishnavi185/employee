@@ -1,88 +1,80 @@
-import React from 'react'
-import axios from 'axios'
-import {useState} from 'react'
+import React, { useState } from 'react';
+import axios from 'axios';
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
+  const [formData, setFormData] = useState({
+    email: "",
+    passward: ""
+  });
 
+  const navigate = useNavigate();
 
-const [formData,setFormData]=useState({
-    email:"",
-    passward:""
-})
-
- const handleChange = (e) => {
+  const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
-const handleSubmit =async(e)=>{
-    // if (!formData.name || !formData.passward) {
-    //  alert("all fields are required")
-    //   return;
-    // }
-    try{
-    e.preventDefault();
-    const response = await axios.post('http://localhost:3000/user/login',formData,{
-        headers: {
-    'Content-Type': 'application/json'
-  },
-  withCredentials:true
-    });
-    console.log(response.data);
 
-   if (response.data.success) {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        'http://localhost:3000/user/login',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          withCredentials: true
+        }
+      );
+
+      console.log(response.data);
+
+      if (response.data.success) {
+        // ✅ Set the token in cookies
+        Cookies.set('token', response.data.token, { expires: 1 });
 
         alert("user is login");
-
+        navigate('/Dasboard'); // ✅ match your exact route path
+      } else {
+        alert("user not login");
+      }
+    } catch (e) {
+      if (e.response) {
+        console.error("Server responded with error:", e.response.data);
+      } else if (e.request) {
+        console.error("No response received from server:", e.request);
+      } else {
+        console.error("Axios error:", e.message);
+      }
     }
-    else{
-        alert("user not login")
-    }
-
-    }
-    catch (e) {
-  if (e.response) {
-    // Server responded with a status other than 2xx
-    console.error("Server responded with error:", e.response.data);
-  } else if (e.request) {
-    // Request was made but no response received
-    console.error("No response received from server:", e.request);
-  } else {
-    // Something else went wrong
-    console.error("Axios error:", e.message);
-  }
-}
-
-}
-
+  };
 
   return (
-     <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <form className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center">LOGIN</h2>
 
-       
-<input 
+        <input 
           type="email"
           name='email'
           placeholder="Email"
-          
-           value={formData.email}
-           onChange={handleChange}
+          value={formData.email}
+          onChange={handleChange}
           className="w-full mb-4 px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
-        
-
-        
 
         <input 
           type="password"
-           name='passward'
+          name='passward' // ✅ no change here
           placeholder="Password"
-           value={formData.passward}
-          
-           onChange={handleChange}
+          value={formData.passward}
+          onChange={handleChange}
           className="w-full mb-6 px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
 
@@ -93,9 +85,7 @@ const handleSubmit =async(e)=>{
         >
           Login
         </button>
-
-        
       </form>
     </div>
-  )
+  );
 }
