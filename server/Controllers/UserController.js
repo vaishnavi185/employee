@@ -110,4 +110,13 @@ const loginUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser, loginUser };
+const logoutUser= (req, res)=>{
+  res.clearCookie("token",{
+    httpOnly:true,
+    secure:false,
+    sameSite: "Strict"
+  });
+  res.status(200).json({ success: true, message: "Logout successful" });
+}
+
+module.exports = { registerUser, loginUser,logoutUser };
