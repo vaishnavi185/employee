@@ -37,7 +37,7 @@ export default function Login() {
 
       if (response.data.success) {
         // ✅ Set the token in cookies
-        Cookies.set('token', response.data.token, { expires: 1 });
+        // Cookies.set('token', response.data.token, { expires: 1 });
 
         alert("user is login");
         navigate('/Dasboard'); // ✅ match your exact route path
