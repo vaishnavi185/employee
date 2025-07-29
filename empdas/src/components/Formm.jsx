@@ -175,6 +175,20 @@ export default function Formm() {
             className="w-full border-gray-300 rounded-md shadow-sm px-3 py-2"
           />
         </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              linktree link
+            </label>
+            <input
+              type="text"
+              name="link"
+              placeholder="link"
+              value={formdata.phone}
+              onChange={handleChange}
+              required
+              className="w-full border-gray-300 rounded-md shadow-sm px-3 py-2"
+            />
+          </div>
 
         {/* Submit Button */}
         <div className="mt-6">

@@ -43,7 +43,7 @@ useEffect(() => {
           </div>
 
           {/* Dropdown Icon */}
-          <ChevronDownIcon className="ml-2 h-5 w-5 text-gray-400" aria-hidden="true" />
+          <ChevronDownIcon className="ml-2 h-30px] w-[30px] text-gray-400" aria-hidden="true" />
            
         </Menu.Button>
       </div>
@@ -70,7 +70,7 @@ useEffect(() => {
                     <UserCircleIcon className="w-[120px] h-[120px] text-[#999696]" />
                   )}
                 </div>
-                <div className='text-[#000000] ml-[122px] mt-[270px] absolute text-center'>
+                <div className='text-[#000000] ml-[155px] mt-[300px] absolute text-center'>
   <p className='text-lg font-semibold'>{formdata.Fullname}</p>
   <p className='text-base text-[#999696] '>{formdata.Bio} </p>
 </div>
