@@ -13,15 +13,15 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const menuItems = [
-  { name: "Dashboard", icon: <HomeIcon className="h-5 w-5 text-[#FFFFFF]"  /> },
+  { name: "Dashboard",  path: "/dashboard",icon: <HomeIcon className="h-5 w-5 text-[#FFFFFF]"  /> },
   
  
-  { name: "Employee", icon: <UsersIcon className="h-5 w-5 text-[#FFFFFF]" /> },
+  { name: "Employee", path :"/Emp",icon: <UsersIcon className="h-5 w-5 text-[#FFFFFF]" /> },
  
-  { name: "Analytics", icon: <ChartBarIcon className="h-5 w-5 text-[#FFFFFF]" /> },
-  { name: "Setting", icon: <Cog6ToothIcon className="h-5 w-5 text-[#FFFFFF]" /> },
-   { name: "Profile", icon: <UserCircleIcon className="h-5 w-5 text-[#FFFFFF]" /> } ,
-  { name: "Help", icon: <QuestionMarkCircleIcon className="h-5 w-5 text-[#FFFFFF]" /> }
+  { name: "Analytics", path:"analy",icon: <ChartBarIcon className="h-5 w-5 text-[#FFFFFF]" /> },
+  { name: "Setting",path:"analy", icon: <Cog6ToothIcon className="h-5 w-5 text-[#FFFFFF]" /> },
+   { name: "Profile",path:"/form", icon: <UserCircleIcon className="h-5 w-5 text-[#FFFFFF]" /> } ,
+  { name: "Help",path:"analy", icon: <QuestionMarkCircleIcon className="h-5 w-5 text-[#FFFFFF]" /> }
 ];
 
 export default function NavBar() {
@@ -43,6 +43,7 @@ export default function NavBar() {
         {menuItems.map((item, i) => (
           <div
             key={i}
+             onClick={() => navigate(item.path)}
             className={`flex items-center gap-3 px-3 py-2  rounded-lg cursor-pointer ${
               item.active
                 ? "bg-blue-500 text-white"
