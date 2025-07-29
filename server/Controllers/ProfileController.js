@@ -1,3 +1,4 @@
+const { trusted } = require('mongoose');
 const UserProfile = require('../Model/Userinfo');
 const User = require('../Model/data');
 
@@ -71,11 +72,44 @@ const getForm = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+const updatedprofile = async (req, res) => {
+  try {
+    console.log("Body:", req.body);
+    console.log("File:", req.file);
+
+    const { Username, Fullname, Bio } = req.body;
+    const profilePicture = req.file ? `/uploads/${req.file.filename}` : null;
+
+    const userId = req.user?._id;
+    if (!userId) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+
+    const updatedProfile = await UserProfile.findOneAndUpdate(
+      { userId },
+      { Username, Fullname, Bio, profilePicture },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedProfile) {
+      return res.status(404).json({ message: "Profile not found" });
+    }
+
+    res.status(200).json({
+      message: "Profile updated successfully",
+      profile: updatedProfile,
+    });
+  } catch (e) {
+    console.error("Update error:", e);
+    res.status(500).json({ message: "Internal server error", error: e.message });
+  }
+};
 
 
 
 
 module.exports={
     FormController,
-    getForm
+    getForm,
+    updatedprofile
 }

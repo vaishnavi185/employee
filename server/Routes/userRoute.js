@@ -1,7 +1,7 @@
 const express = require('express');
 const route = express.Router();
 const  { registerUser,loginUser, logoutUser } = require('../Controllers/UserController');
-const { FormController ,getForm} = require('../Controllers/ProfileController');
+const { FormController ,getForm,updatedprofile} = require('../Controllers/ProfileController');
 const Auth = require('../Middleware/Auth');
 const upload = require('../Middleware/Upload');
 route.post('/registration',registerUser);
@@ -18,5 +18,6 @@ route.get('/me', Auth, (req, res) => {
     phone: req.user.phone
   });
 });
+route.put("/update", Auth, upload.single("profilePicture"), updatedprofile);
 route.post('/logout',Auth,logoutUser)
 module.exports=route;

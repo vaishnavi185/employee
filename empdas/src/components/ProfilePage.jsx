@@ -22,6 +22,8 @@ useEffect(() => {
     "Profile Picture URL:",
     formdata?.profilePicture && `http://localhost:3000${formdata.profilePicture.replace(/\\/g, "/")}`
   );
+
+  
   return (
     <Menu as="div" className="relative inline-block text-left  mt-[25px] ml-[40px]">
       <div>
@@ -70,9 +72,11 @@ useEffect(() => {
                     <UserCircleIcon className="w-[120px] h-[120px] text-[#999696]" />
                   )}
                 </div>
-                <div className='text-[#000000] ml-[155px] mt-[300px] absolute text-center'>
-  <p className='text-lg font-semibold'>{formdata.Fullname}</p>
-  <p className='text-base text-[#999696] '>{formdata.Bio} </p>
+                <div className="absolute mt-[280px] flex flex-col items-center  text-[#000000]">
+  <p className="text-lg font-semibold">{formdata.Fullname}</p>
+ <p className="text-base text-[#999696] wrap-anywhere text-balance ml-[90px]">
+  {formdata.Bio}
+</p>
 </div>
 
            </div>
