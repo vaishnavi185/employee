@@ -27,8 +27,15 @@ useEffect(() => {
       <div>
        <Menu.Button className="flex items-center gap-2 px-3 py-2 text-sm font-semibold text-gray-900   hover:bg-[#c8c9cc] transition-colors  rounded-md">
           {/* Profile Icon */}
-          <UserCircleIcon className="h-[40px] w-[40px] text-gray-500" />
-
+          {formdata?.profilePicture ? (
+                     <img
+      src={`http://localhost:3000/${formdata.profilePicture.replace(/\\/g, "/").replace(/^\/?/, "")}`}
+      alt={formdata?.Fullname || "User"}
+      className="w-[45px] h-[45px] object-cover rounded-full"
+    />
+                  ) : (
+                    <UserCircleIcon className="w-[120px] h-[120px] text-[#999696]" />
+                  )}
           {/* Name and Email */}
           <div className="flex flex-col items-start text-left">
             <span className="text-sm font-medium">{formdata?.Username || "Guest"}</span>
