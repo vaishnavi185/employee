@@ -2,8 +2,26 @@ import { Menu } from '@headlessui/react';
 import { PencilSquareIcon } from '@heroicons/react/24/outline';
 
 import { ChevronDownIcon ,ChevronLeftIcon,UserCircleIcon} from '@heroicons/react/20/solid';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 export default function ProfilePage() {
+  const [formdata, setformdata] = useState(null);
+
+useEffect(() => {
+  fetch('http://localhost:3000/user/getform', {
+    method: 'GET',
+    credentials: 'include',
+    headers: { 'Content-Type': 'application/json' },
+  })
+    .then(res => res.json())
+    .then(data => setformdata(data))
+    .catch(err => console.error("Error fetching form:", err));
+}, []); // runs only once on mount
+ console.log(
+    "Profile Picture URL:",
+    formdata?.profilePicture && `http://localhost:3000${formdata.profilePicture.replace(/\\/g, "/")}`
+  );
   return (
     <Menu as="div" className="relative inline-block text-left  mt-[25px] ml-[40px]">
       <div>
@@ -13,8 +31,8 @@ export default function ProfilePage() {
 
           {/* Name and Email */}
           <div className="flex flex-col items-start text-left">
-            <span className="text-sm font-medium">John Doe</span>
-            <span className="text-xs text-gray-500">example@gmail.com</span>
+            <span className="text-sm font-medium">{formdata?.Username || "Guest"}</span>
+            <span className="text-xs text-gray-500">{formdata?.email || "No email"}</span>
           </div>
 
           {/* Dropdown Icon */}
@@ -34,12 +52,20 @@ export default function ProfilePage() {
             </div>
               
 
-                <div className='w-[120px] h-[120px] rounded-full bg-[#FFFFFF] mt-[150px] ml-[122px] absolute' >
-                   <UserCircleIcon className="w-[120px] h-[120px] text-[#999696]" />
+                <div className='w-[120px] h-[120px] rounded-full bg-[#FFFFFF] mt-[150px] ml-[122px] absolute flex flex-centre' >
+                   {formdata?.profilePicture ? (
+                     <img
+      src={`http://localhost:3000/${formdata.profilePicture.replace(/\\/g, "/").replace(/^\/?/, "")}`}
+      alt={formdata?.Fullname || "User"}
+      className="w-full h-full object-cover rounded-full"
+    />
+                  ) : (
+                    <UserCircleIcon className="w-[120px] h-[120px] text-[#999696]" />
+                  )}
                 </div>
                 <div className='text-[#000000] ml-[122px] mt-[270px] absolute text-center'>
-  <p className='text-lg font-semibold'>Lucifer Bandage</p>
-  <p className='text-base text-[#999696] '>devloper </p>
+  <p className='text-lg font-semibold'>{formdata.Fullname}</p>
+  <p className='text-base text-[#999696] '>{formdata.Bio} </p>
 </div>
 
            </div>
