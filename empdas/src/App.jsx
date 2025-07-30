@@ -1,21 +1,34 @@
-import ProtectedRoute from './components/ProtectedRoute'; // add this import
-import { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import SignupPage from './components/SignupPage'
-import Login from './components/Login'
-import Formm from './components/Formm'
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import SignupPage from "./components/SignupPage";
+import Login from "./components/Login";
+import Formm from "./components/Formm";
+import Home from "./components/Home";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Cookies from "js-cookie";
 
-import Home  from './components/Home'
 function App() {
+  const [loading, setLoading] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = Cookies.get("authToken");
+    setIsLoggedIn(!token);
+    setLoading(false); // auth check done
+  }, []);
+
+  if (loading) {
+    return <div className="flex justify-center items-center h-screen">Loading...</div>;
+  }
+
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<SignupPage />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/form' element={<Formm />} />
-        
+        <Route path="/" element={isLoggedIn ? <Navigate to="/Dasboard" /> : <SignupPage />} />
+        <Route path="/login" element={isLoggedIn ? <Navigate to="/Dasboard" /> : <Login />} />
+        <Route path="/form" element={<Formm />} />
         <Route
-          path='/Dasboard'
+          path="/Dasboard"
           element={
             <ProtectedRoute>
               <Home />
