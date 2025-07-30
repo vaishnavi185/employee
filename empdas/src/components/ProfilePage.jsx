@@ -1,6 +1,6 @@
 import { Menu } from '@headlessui/react';
 import { PencilSquareIcon } from '@heroicons/react/24/outline';
-
+import { useNavigate } from 'react-router-dom';
 import { ChevronDownIcon ,ChevronLeftIcon,UserCircleIcon} from '@heroicons/react/20/solid';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -22,6 +22,11 @@ useEffect(() => {
     "Profile Picture URL:",
     formdata?.profilePicture && `http://localhost:3000${formdata.profilePicture.replace(/\\/g, "/")}`
   );
+  const navigate =useNavigate();
+  const handleClick=()=>{
+     navigate('/form');
+  }
+
 
   
   return (
@@ -57,7 +62,7 @@ useEffect(() => {
            <div className='w-[360px] h-[200px] bg-[#202121] rounded-t-[30px]  flex flex-col'>
             <div className='flex flex-row gap-[280px]'>
   <ChevronLeftIcon className='h-[30px] w-[30px] text-[#a6abad] mt-[10px] ml-[10px] '></ChevronLeftIcon >
-<PencilSquareIcon className=" h-5 w-5 text-gray-400 mt-[10px]" aria-hidden="true" />
+<PencilSquareIcon className=" h-5 w-5 text-gray-400 mt-[10px]" aria-hidden="true" onClick={handleClick} />
             </div>
               
 
