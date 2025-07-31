@@ -6,6 +6,7 @@ import Formm from "./components/Formm";
 import Home from "./components/Home";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Cookies from "js-cookie";
+import Message from "./components/Message";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -26,6 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={isLoggedIn ? <Navigate to="/Dasboard" /> : <SignupPage />} />
         <Route path="/login" element={isLoggedIn ? <Navigate to="/Dasboard" /> : <Login />} />
+        <Route path="/message" element={<Message />} />
         <Route path="/form" element={<Formm />} />
         <Route
           path="/Dasboard"
