@@ -64,49 +64,18 @@ const contacts = [
     time: '20min ago',
     unread: 1,
     avatar: 'https://randomuser.me/api/portraits/women/8.jpg',
-  }, {
-    id: 8,
-    name: 'Anya Waelchi',
-    message: 'Hey team, I’ve finished with th...',
-    time: '20min ago',
-    unread: 1,
-    avatar: 'https://randomuser.me/api/portraits/women/8.jpg',
-  }, {
-    id: 8,
-    name: 'Anya Waelchi',
-    message: 'Hey team, I’ve finished with th...',
-    time: '20min ago',
-    unread: 1,
-    avatar: 'https://randomuser.me/api/portraits/women/8.jpg',
-  }, {
-    id: 8,
-    name: 'Anya Waelchi',
-    message: 'Hey team, I’ve finished with th...',
-    time: '20min ago',
-    unread: 1,
-    avatar: 'https://randomuser.me/api/portraits/women/8.jpg',
-  }, {
-    id: 8,
-    name: 'Anya Waelchi',
-    message: 'Hey team, I’ve finished with th...',
-    time: '20min ago',
-    unread: 1,
-    avatar: 'https://randomuser.me/api/portraits/women/8.jpg',
-  }, {
-    id: 8,
-    name: 'Anya Waelchi',
-    message: 'Hey team, I’ve finished with th...',
-    time: '20min ago',
-    unread: 1,
-    avatar: 'https://randomuser.me/api/portraits/women/8.jpg',
   },
 ];
 
-export default function ContactList() {
+export default function ContactList({ onSelectContact }) {
   return (
-    <div className="flex flex-col divide-y divide-gray-200 w-full max-w-md mx-auto bg-white rounded-lg shadow-sm overflow-y-auto h-[720px]"> {/* <-- SCROLL */}
+    <div className="flex flex-col divide-y divide-gray-200 w-full bg-white rounded-lg shadow-sm overflow-y-auto h-[720px]">
       {contacts.map((contact) => (
-        <div key={contact.id} className="flex items-center p-4 hover:bg-gray-50 transition">
+        <div
+          key={contact.id}
+          className="flex items-center p-4 hover:bg-gray-50 transition cursor-pointer"
+          onClick={() => onSelectContact(contact)}
+        >
           <img
             src={contact.avatar}
             alt={contact.name}
