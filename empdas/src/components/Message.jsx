@@ -47,7 +47,7 @@ export default function Message() {
         <ContactList onSelectContact={handleSelectContact} />
       </div>
 
-      {/* Main Chat Area */}
+     
       <div className="w-[70%] flex flex-col h-full">
         {selectedContact ? (
           <>
@@ -76,7 +76,7 @@ export default function Message() {
                     key={msg.id}
                     className={`max-w-xs px-4 py-2 rounded-lg text-sm ${
                       msg.sender === 'you'
-                        ? 'ml-auto bg-purple-100 text-right'
+                        ? 'ml-auto bg-black-100 text-right'
                         : 'mr-auto bg-white'
                     }`}
                   >
@@ -98,7 +98,7 @@ export default function Message() {
               />
               <button
                 onClick={handleSendMessage}
-                className="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-purple-700"
+                className="bg-black text-white px-4 py-2 rounded-lg text-sm hover:bg-black-700"
               >
                 Send
               </button>
